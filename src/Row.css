@@ -1,0 +1,36 @@
+.row,
+.poster__card {
+  position: relative;
+}
+img.row__poster {
+  object-fit: contain;
+  position: relative;
+  width: 300px;
+  /* max-height: 400px; */
+  padding: 5px;
+}
+
+.row__posters {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 60px 10px;
+}
+
+.poster__card .movie__text {
+  opacity: 0;
+  top: 0;
+  background-color: rgba(30, 36, 59, 0.9);
+  color: #fff;
+  height: 100%;
+  transition: opacity 500ms ease;
+}
+.poster__card:hover .movie__text {
+  position: absolute;
+  opacity: 1;
+}
+.row__posters::-webkit-scrollbar {
+  display: none;
+}
