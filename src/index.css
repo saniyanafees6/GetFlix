@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.App,
+.ui,
+.item {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+.ui.secondary.pointing.menu .active.item {
+  border-color: #fff !important;
+}

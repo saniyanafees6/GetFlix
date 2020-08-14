@@ -1,19 +1,15 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import Row from './Row';
-import requests from './requests';
+import Panes from './Panes';
+import Banner from './Banner';
 
-function App() {
-  return (
-    <div className='App'>
-      <Row title='Trending Now' fetchUrl={requests.getTrending} />
-      {/* <header className='App-header'>
-
-        <img src={logo} className='App-logo' alt='logo' />
-      </header> */}
-    </div>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <div className='App'>
+        <Banner />
+        <Panes />
+      </div>
+    );
+  }
 }
-
-export default App;
