@@ -28,7 +28,7 @@ function Movie(props) {
       className='banner'
       style={{
         backgroundSize: 'cover',
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${movie?.backdrop_path}) `,
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${movie?.backdrop_path})`,
         backgroundPosition: 'center center',
       }}>
       <div className='banner__contents'>
@@ -50,6 +50,7 @@ function Movie(props) {
           {truncate(movie?.overview, 150)}
         </h2>
       </div>
+      <div className='banner__gradient'></div>
     </header>
   );
 }
