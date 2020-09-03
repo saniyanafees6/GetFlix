@@ -3,6 +3,7 @@ import axios from './axios';
 import requests from './requests';
 import './Banner.css';
 import { AiFillCaretRight, AiOutlineInfoCircle } from 'react-icons/ai';
+// import { Route, Link } from 'react-router-dom';
 function Banner() {
   const [movie, setMovie] = useState([]);
 
@@ -31,17 +32,17 @@ function Banner() {
         backgroundPosition: 'center center',
       }}>
       <div className='banner__contents'>
-        <h1 className='banner__title'>
+        <h1>
           {movie?.original_title ||
             movie?.name ||
             movie?.title ||
             movie?.original_name}
         </h1>
         <div className='banner__buttons'>
-          <button class='banner__button'>
+          <button className='banner__button'>
             <AiFillCaretRight /> Watch Trailer
           </button>
-          <button class='banner__button'>
+          <button className='banner__button'>
             <AiOutlineInfoCircle /> More Info
           </button>
         </div>

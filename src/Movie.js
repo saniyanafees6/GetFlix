@@ -1,57 +1,126 @@
 import React, { useEffect, useState } from 'react';
+import { Image, Grid, Container, Header } from 'semantic-ui-react';
 import axios from './axios';
-import dotenv from 'dotenv';
-import { AiFillCaretRight, AiOutlineInfoCircle } from 'react-icons/ai';
-dotenv.config();
+import './Movie.css';
+import { loadStripe } from '@stripe/stripe-js';
+let numeral = require('numeral');
 
 const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500/';
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe(
+  'pk_test_51HMmfxLq0yPvXqQ0roUoxUqEUsLnamjo5nmqr1cYTChlPZNeOT6w4OpsL1c2SCu18RoPsbCZdin9qMVcTzjWlnMw006Bt82Vse'
+);
 
 function Movie(props) {
   const { movieId } = props.match.params;
   const [movie, setMovie] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(
         `/movie/${movieId}?api_key=${TMDB_API_KEY}&language=en-US`
       );
-      console.log(request);
       setMovie(request.data);
       return request;
     }
     fetchData();
   }, [movieId]);
-  function truncate(str, n) {
-    return str?.length > n ? `${str.substr(0, n - 1)}...` : str;
+  console.log(movie);
+  function nestedDataToString(nestedData) {
+    let nestedArray = [],
+      resultString;
+    if (nestedData !== undefined) {
+      nestedData.forEach(function (item) {
+        nestedArray.push(item.name);
+      });
+    }
+    resultString = nestedArray.join(', '); // array to string
+    return resultString;
   }
+
+  const handleClick = async (event) => {
+    // When the customer clicks on the button, redirect them to Checkout.
+    const stripe = await stripePromise;
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [
+        {
+          price: 'price_1HN8xvLq0yPvXqQ0BvYxQOBN', // Replace with the ID of your price
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      successUrl: `http://localhost:3000/success/${movie.id}`,
+      cancelUrl: `http://localhost:3000/cancel/${movie.id}`,
+    });
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `error.message`.
+  };
+  let genre = movie.genres,
+    genresList = nestedDataToString(genre),
+    totalRevenue = movie.revenue,
+    noData = '-';
+  if (totalRevenue === 'undefined' || totalRevenue === 0) {
+    totalRevenue = noData;
+  } else {
+    totalRevenue = numeral(movie.revenue).format('($0,0)');
+  }
+
   return (
-    <header
-      className='banner'
-      style={{
-        backgroundSize: 'cover',
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${movie?.backdrop_path})`,
-        backgroundPosition: 'center center',
-      }}>
-      <div className='banner__contents'>
-        <h1 className='banner__title'>
-          {movie?.original_title ||
-            movie?.name ||
-            movie?.title ||
-            movie?.original_name}
-        </h1>
-        <div className='banner__buttons'>
-          <button class='banner__button'>
-            <AiFillCaretRight /> Watch Trailer
-          </button>
-          <button class='banner__button'>
-            <AiOutlineInfoCircle /> More Info
-          </button>
-        </div>
-        <h2 className='banner__description'>
-          {truncate(movie?.overview, 150)}
-        </h2>
+    <div id='outer__container'>
+      <div
+        id='card__container'
+        style={{
+          backgroundSize: 'cover',
+          backgroundImage: `url(https://image.tmdb.org/t/p/original${movie?.backdrop_path}) `,
+          backgroundPosition: 'center center',
+        }}>
+        <Container>
+          <Grid columns='equal'>
+            <Grid.Column>
+              <Image
+                className='card__poster'
+                src={`${TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
+                alt={movie.original_title}
+              />
+            </Grid.Column>
+            <Grid.Column className='movie__detail'>
+              <Header as='h2'>{movie.original_title}</Header>
+              <span className='tagline'>{movie.tagline}</span>
+              <p>{movie.overview}</p>
+              <div className='additional-details'>
+                <span className='genre-list'>{genresList}</span>
+                <span className='production-list'>{}</span>
+                <div className='row nopadding release-details'>
+                  <div>
+                    Original Release:{' '}
+                    <span className='meta-data'>{movie.release}</span>
+                  </div>
+                  <div>
+                    Running Time:{' '}
+                    <span className='meta-data'>{movie.runtime} mins</span>{' '}
+                  </div>
+                  <div>
+                    Box Office:{' '}
+                    <span className='meta-data'>{totalRevenue}</span>
+                  </div>
+                  <div>
+                    Vote Average:{' '}
+                    <span className='meta-data'>{movie.vote_average}/10</span>
+                  </div>
+                </div>
+              </div>
+              <button role='link' onClick={handleClick}>
+                Checkout
+              </button>
+            </Grid.Column>
+          </Grid>
+        </Container>
       </div>
-      <div className='banner__gradient'></div>
-    </header>
+    </div>
   );
 }
 
