@@ -5,6 +5,7 @@ import Movie from './Movie';
 import { AiFillCaretRight, AiOutlineInfoCircle } from 'react-icons/ai';
 import { Route, Link } from 'react-router-dom';
 import Slider from 'react-slick';
+import { Button, Header, Image } from 'semantic-ui-react';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -17,6 +18,7 @@ function Row({ fetchUrl }) {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
       setMovies(request.data.results);
+      console.log(request);
       return request;
     }
     fetchData();
@@ -57,23 +59,26 @@ function Row({ fetchUrl }) {
         <Slider {...settings}>
           {movies.map((movie) => (
             <div className='poster__card' key={movie.id}>
-              <img
+              <Image
                 className='row__poster'
                 src={`${TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
                 alt={movie.original_title}
               />
               <div className='movie__text'>
-                <h3>{movie.original_title}</h3>
+                <Header as='h3'>{movie.original_title}</Header>
                 <div className='poster__buttons'>
                   <ul>
                     <li>
-                      <button class='poster__button'>
+                      <Button className='poster__button' inverted color='grey'>
                         <AiFillCaretRight /> Watch Trailer
-                      </button>
+                      </Button>
                     </li>
                     <li>
                       <Link
-                        class='poster__button'
+                        basic
+                        color='grey'
+                        content='Grey'
+                        className='poster__button'
                         to={`/movie/${movie.id}`}
                         key={movie.id}>
                         <AiOutlineInfoCircle /> More Info

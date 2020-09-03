@@ -12,7 +12,6 @@ code {
     monospace;
 }
 .App,
-.ui,
 .item {
   background-color: #111 !important;
   color: #fff !important;

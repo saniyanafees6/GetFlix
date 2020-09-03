@@ -67,3 +67,13 @@
 header.banner {
   position: relative;
 }
+button.ui.grey.inverted.button {
+  width: 150px;
+}
+.poster__buttons ul {
+  padding: 0;
+}
+a,
+a:hover {
+  color: unset;
+}
