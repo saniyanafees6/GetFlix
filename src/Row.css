@@ -24,6 +24,9 @@ img.row__poster {
 poster__buttons ul li {
   list-style-type: none !important;
 }
+.movie__text h3.ui.header {
+  color: #ffffff;
+}
 img.row__poster {
   margin: auto;
 }

@@ -77,3 +77,8 @@ a,
 a:hover {
   color: unset;
 }
+ul.banner__buttons {
+  list-style-type: none;
+  display: inline-flex;
+  padding: 0;
+}
