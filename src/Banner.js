@@ -3,7 +3,8 @@ import axios from './axios';
 import requests from './requests';
 import './Banner.css';
 import { AiFillCaretRight, AiOutlineInfoCircle } from 'react-icons/ai';
-// import { Route, Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 function Banner() {
   const [movie, setMovie] = useState([]);
 
@@ -38,14 +39,24 @@ function Banner() {
             movie?.title ||
             movie?.original_name}
         </h1>
-        <div className='banner__buttons'>
-          <button className='banner__button'>
-            <AiFillCaretRight /> Watch Trailer
-          </button>
-          <button className='banner__button'>
-            <AiOutlineInfoCircle /> More Info
-          </button>
-        </div>
+
+        <ul className='banner__buttons'>
+          <li>
+            <Button className='poster__button' inverted color='grey'>
+              <AiFillCaretRight /> Watch Trailer
+            </Button>
+          </li>
+          <li>
+            <Link
+              basic
+              color='grey'
+              content='Grey'
+              className='poster__button'
+              to={`/movie/${movie?.id}`}>
+              <AiOutlineInfoCircle /> More Info
+            </Link>
+          </li>
+        </ul>
         <h2 className='banner__description'>
           {truncate(movie?.overview, 150)}
         </h2>

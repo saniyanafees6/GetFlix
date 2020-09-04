@@ -6,7 +6,6 @@ import './index.css';
 import App from './App';
 import Movie from './Movie';
 import Success from './Success';
-import Cancel from './Cancel';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
@@ -17,7 +16,6 @@ const routes = (
       <Route path='/movie/:movieId' component={Movie} />
       {/* <Route path='/checkout/:movieId' component={Purchase} /> */}
       <Route path='/success/:movieId' component={Success} />
-      <Route path='/cancel/:movieId' component={Cancel} />
       <Redirect from='/' exact to='/home' />
     </Switch>
   </BrowserRouter>

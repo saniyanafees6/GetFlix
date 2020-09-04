@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap');
+.icon__container svg {
+  font-size: 500%;
+  color: greenyellow;
+}
+.icon__container {
+  text-align: center;
+  padding-top: 40px;
+}
+.success__text,
+.another__text {
+  color: #ffffff;
+}
+.success__image {
+  width: 200px;
+  height: auto;
+  margin: auto;
+}
+.success__text,
+.another__text {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+p.success__text {
+  font-size: 35px;
+}
+
+span.bold__text {
+  font-weight: 900;
+  display: block;
+}
+
+p.another__text {
+  font-size: 16px;
+  padding-top: 35px;
+}

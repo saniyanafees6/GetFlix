@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Grid, Container, Header } from 'semantic-ui-react';
+import { Image, Header } from 'semantic-ui-react';
 import axios from './axios';
 import './Movie.css';
 import { loadStripe } from '@stripe/stripe-js';
+import Nav from './Nav';
+
 let numeral = require('numeral');
 
 const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
@@ -53,7 +55,7 @@ function Movie(props) {
       ],
       mode: 'payment',
       successUrl: `http://localhost:3000/success/${movie.id}`,
-      cancelUrl: `http://localhost:3000/cancel/${movie.id}`,
+      cancelUrl: `http://localhost:3000/movie/${movie.id}`,
     });
     // If `redirectToCheckout` fails due to a browser or network
     // error, display the localized error message to your customer
@@ -70,7 +72,9 @@ function Movie(props) {
   }
 
   return (
-    <div id='outer__container'>
+    <>
+      <Nav />
+      <div id='gradient__container'></div>
       <div
         id='card__container'
         style={{
@@ -78,49 +82,51 @@ function Movie(props) {
           backgroundImage: `url(https://image.tmdb.org/t/p/original${movie?.backdrop_path}) `,
           backgroundPosition: 'center center',
         }}>
-        <Container>
-          <Grid columns='equal'>
-            <Grid.Column>
-              <Image
-                className='card__poster'
-                src={`${TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
-                alt={movie.original_title}
-              />
-            </Grid.Column>
-            <Grid.Column className='movie__detail'>
-              <Header as='h2'>{movie.original_title}</Header>
-              <span className='tagline'>{movie.tagline}</span>
-              <p>{movie.overview}</p>
-              <div className='additional-details'>
-                <span className='genre-list'>{genresList}</span>
-                <span className='production-list'>{}</span>
-                <div className='row nopadding release-details'>
-                  <div>
-                    Original Release:{' '}
-                    <span className='meta-data'>{movie.release}</span>
-                  </div>
-                  <div>
-                    Running Time:{' '}
-                    <span className='meta-data'>{movie.runtime} mins</span>{' '}
-                  </div>
-                  <div>
-                    Box Office:{' '}
-                    <span className='meta-data'>{totalRevenue}</span>
-                  </div>
-                  <div>
-                    Vote Average:{' '}
-                    <span className='meta-data'>{movie.vote_average}/10</span>
-                  </div>
+        <div className='movie__card'>
+          <div className='movie__image'>
+            <Image
+              className='card__poster'
+              src={`${TMDB_IMAGE_BASE_URL}${movie.poster_path}`}
+              alt={movie.original_title}
+            />
+          </div>
+          <div className='movie__detail'>
+            <Header as='h2'>{movie?.original_title}</Header>
+            <span className='tagline'>{movie?.tagline}</span>
+            <p className='movie__overview'>{movie?.overview}</p>
+            <div className='additional-details'>
+              <span className='genre-list'>{genresList}</span>
+              <span className='production-list'>{}</span>
+              <div className='row padding release-details'>
+                <div className='movie__stats'>
+                  Original Release:{' '}
+                  <span className='meta-data'>{movie.release_date}</span>
+                </div>
+                <div className='movie__stats'>
+                  Running Time:{' '}
+                  <span className='meta-data'>{movie.runtime} mins</span>{' '}
+                </div>
+                <div className='movie__stats'>
+                  Box Office: <span className='meta-data'>{totalRevenue}</span>
+                </div>
+                <div className='movie__stats'>
+                  Vote Average:{' '}
+                  <span className='meta-data'>{movie.vote_average}/10</span>
                 </div>
               </div>
-              <button role='link' onClick={handleClick}>
-                Checkout
-              </button>
-            </Grid.Column>
-          </Grid>
-        </Container>
+            </div>
+            <button
+              role='link'
+              onClick={handleClick}
+              color='grey'
+              content='Grey'
+              className='movie__button'>
+              Purchase for $30
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
