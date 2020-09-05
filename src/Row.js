@@ -67,24 +67,15 @@ function Row({ fetchUrl }) {
               <div className='movie__text'>
                 <Header as='h3'>{movie.original_title}</Header>
                 <div className='poster__buttons'>
-                  <ul>
-                    <li>
-                      <Button className='poster__button' inverted color='grey'>
-                        <AiFillCaretRight /> Watch Trailer
-                      </Button>
-                    </li>
-                    <li>
-                      <Link
-                        basic
-                        color='grey'
-                        content='Grey'
-                        className='poster__button'
-                        to={`/movie/${movie.id}`}
-                        key={movie.id}>
-                        <AiOutlineInfoCircle /> More Info
-                      </Link>
-                    </li>
-                  </ul>
+                  <Link
+                    basic
+                    color='grey'
+                    content='Grey'
+                    className='poster__button'
+                    to={`/movie/${movie.id}`}
+                    key={movie.id}>
+                    <AiOutlineInfoCircle /> More Info
+                  </Link>
                 </div>
               </div>
             </div>
