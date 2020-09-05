@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from './axios.js';
 import './Row.css';
 import Movie from './Movie';
-import { AiFillCaretRight, AiOutlineInfoCircle } from 'react-icons/ai';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { Route, Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import { Button, Header, Image } from 'semantic-ui-react';
+import { Header, Image } from 'semantic-ui-react';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -67,24 +67,15 @@ function Row({ fetchUrl }) {
               <div className='movie__text'>
                 <Header as='h3'>{movie.original_title}</Header>
                 <div className='poster__buttons'>
-                  <ul>
-                    <li>
-                      <Button className='poster__button' inverted color='grey'>
-                        <AiFillCaretRight /> Watch Trailer
-                      </Button>
-                    </li>
-                    <li>
-                      <Link
-                        basic
-                        color='grey'
-                        content='Grey'
-                        className='poster__button'
-                        to={`/movie/${movie.id}`}
-                        key={movie.id}>
-                        <AiOutlineInfoCircle /> More Info
-                      </Link>
-                    </li>
-                  </ul>
+                  <Link
+                    basic
+                    color='grey'
+                    content='Grey'
+                    className='poster__button'
+                    to={`/movie/${movie.id}`}
+                    key={movie.id}>
+                    <AiOutlineInfoCircle /> More Info
+                  </Link>
                 </div>
               </div>
             </div>

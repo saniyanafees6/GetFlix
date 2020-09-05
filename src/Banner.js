@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from './axios';
 import requests from './requests';
 import './Banner.css';
-import { AiFillCaretRight, AiOutlineInfoCircle } from 'react-icons/ai';
-import { Button } from 'semantic-ui-react';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+
 function Banner() {
   const [movie, setMovie] = useState([]);
 
@@ -13,7 +13,7 @@ function Banner() {
       const request = await axios.get(requests.getNowPlaying);
       setMovie(
         request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1) || 0
+          Math.floor(Math.random() * request.data.results.length - 1) || 2
         ]
       );
       return request;
@@ -23,7 +23,7 @@ function Banner() {
   function truncate(str, n) {
     return str?.length > n ? `${str.substr(0, n - 1)}...` : str;
   }
-  // console.log(movie);
+
   return (
     <header
       className='banner'
@@ -40,23 +40,16 @@ function Banner() {
             movie?.original_name}
         </h1>
 
-        <ul className='banner__buttons'>
-          <li>
-            <Button className='poster__button' inverted color='grey'>
-              <AiFillCaretRight /> Watch Trailer
-            </Button>
-          </li>
-          <li>
-            <Link
-              basic
-              color='grey'
-              content='Grey'
-              className='poster__button'
-              to={`/movie/${movie?.id}`}>
-              <AiOutlineInfoCircle /> More Info
-            </Link>
-          </li>
-        </ul>
+        <div className='banner__buttons'>
+          <Link
+            basic
+            color='grey'
+            content='Grey'
+            className='poster__button'
+            to={`/movie/${movie?.id}`}>
+            <AiOutlineInfoCircle /> More Info
+          </Link>
+        </div>
         <h2 className='banner__description'>
           {truncate(movie?.overview, 150)}
         </h2>
