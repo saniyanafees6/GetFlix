@@ -55,8 +55,8 @@ function Movie(props) {
         },
       ],
       mode: 'payment',
-      successUrl: `http://localhost:3000/success/${movie.id}`,
-      cancelUrl: `http://localhost:3000/movie/${movie.id}`,
+      successUrl: `https://movie-rental-3745e.web.app/success/${movie.id}`,
+      cancelUrl: `https://movie-rental-3745e.web.app/movie/${movie.id}`,
     });
     // If `redirectToCheckout` fails due to a browser or network
     // error, display the localized error message to your customer
