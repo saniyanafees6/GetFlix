@@ -4,6 +4,7 @@ import axios from './axios';
 import './Movie.css';
 import { loadStripe } from '@stripe/stripe-js';
 import Nav from './Nav';
+import Footer from './Footer.js';
 
 let numeral = require('numeral');
 
@@ -126,6 +127,7 @@ function Movie(props) {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -5,6 +5,7 @@ import Row from './Row';
 import requests from './requests';
 import { Tab } from 'semantic-ui-react';
 import Nav from './Nav.js';
+import Footer from './Footer.js';
 const panes = [
   {
     menuItem: 'On Demand',
@@ -30,6 +31,7 @@ export default class App extends React.Component {
         <Nav />
         <Banner />
         <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+        <Footer />
       </div>
     );
   }

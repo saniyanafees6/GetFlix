@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from './axios.js';
 import './Row.css';
 import Movie from './Movie';
-import { AiFillCaretRight, AiOutlineInfoCircle } from 'react-icons/ai';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { Route, Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import { Button, Header, Image } from 'semantic-ui-react';
+import { Header, Image } from 'semantic-ui-react';
 import dotenv from 'dotenv';
 
 dotenv.config();

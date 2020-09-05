@@ -13,7 +13,7 @@ function Banner() {
       const request = await axios.get(requests.getNowPlaying);
       setMovie(
         request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1) || 0
+          Math.floor(Math.random() * request.data.results.length - 1) || 2
         ]
       );
       return request;
