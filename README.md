@@ -1,5 +1,6 @@
 # GetFlix :clapper:
 
+[View it LIVE](http://movie-rental-3745e.web.app)
 ![GetFlix Screenshot](GetFlix.png)
 
 TMDb Movie Search is a responsive React app that utilises Twitter's typeahead.js and Bloodhound suggestion engine, loading data via The Movie Database (TMDb) API.
@@ -19,11 +20,11 @@ Make sure you have [node.js](http://nodejs.org/download/) installed, then take t
 3. Start the project: `npm start`
 4. Open your browser at: `http://localhost:3000`
 
-## Author
-[Saniya Nafees](https://www.saniyanafees.com)
-
 
 ## Design Inspirations
 1. [Netflix](https://www.netflix.com/)
 2. [AMC Theatres](https://www.amctheatres.com)
 3. [Stephen Kempin](https://github.com/SKempin/reactjs-tmdb-app)
+
+
+### Created and Designed by: [Saniya Nafees](https://www.saniyanafees.com)
