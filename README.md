@@ -1,68 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GetFlix :clapper:
 
-## Available Scripts
+[View it LIVE](http://movie-rental-3745e.web.app)
+![GetFlix Screenshot](GetFlix.png)
 
-In the project directory, you can run:
+TMDb Movie Search is a responsive React app that utilises Twitter's typeahead.js and Bloodhound suggestion engine, loading data via The Movie Database (TMDb) API.
+GetFlix is a responsive [React](http://facebook.github.io/react/index.html) app that utilizes [Stripe API](https://stripe.com) for processing payments and [TMDB API](https://developers.themoviedb.org/3) to load the data.
 
-### `yarn start`
+| Tools                                                     | Description                                                                          |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [React](http://facebook.github.io/react/index.html)       | A JavaScript library for building user interfaces                                    |
+| [React Icons](https://react-icons.github.io/react-icons/) | Include popular icons in React projects easily with react-icons                      |
+| [Semantic UI React](https://react.semantic-ui.com)        | React Integration for Semantic UI, which is a modern front-end development framework |
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation & Setup
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Make sure you have [node.js](http://nodejs.org/download/) installed, then take the following steps:
 
-### `yarn test`
+1. Clone the repo: `git clone https://github.com/saniyanafees6/GetFlix.git`
+2. In the command prompt window enter: `cd GetFlix`
+3. Install packages: `npm install`
+4. Start the project: `npm start`
+5. Open your browser at: `http://localhost:3000`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Something to note:
 
-### `yarn build`
+Stripe is still in test mode, you can enter `4242 4242 4242 4242` for the card number and any valid expiration date, and a random CVC number
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Created and Designed by: [Saniya Nafees](https://www.saniyanafees.com)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Design Inspirations [Netflix](https://www.netflix.com/), [AMC Theatres](https://www.amctheatres.com) and [Stephen Kempin](https://github.com/SKempin/reactjs-tmdb-app)
